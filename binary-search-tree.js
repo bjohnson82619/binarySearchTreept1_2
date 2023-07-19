@@ -29,13 +29,30 @@ class BinarySearchTree {
       if(!currentNode.right){
         currentNode.right = new TreeNode(val)
       } else {
-        this.insert(val, currentNode.right); 
+        this.insert(val, currentNode.right);
       }
     }
   }
 
-  search(val) {
-    // Your code here
+  search(val, current = this.root) {
+    if(current === null){
+      return false;
+    } else if (val <= this.root.val) {
+        if(val === current.val){
+          return true;
+        } else {
+          this.search(val, current.left)
+      }
+    } else {
+      if(current === null){
+        if(val === current.val){
+          return true;
+        } else {
+          this.search(val, current.right)
+        }
+      }
+    }
+    return false;
   }
 
 
