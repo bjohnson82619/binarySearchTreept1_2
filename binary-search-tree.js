@@ -34,25 +34,19 @@ class BinarySearchTree {
     }
   }
 
-  search(val, current = this.root) {
-    if(current === null){
-      return false;
-    } else if (val <= this.root.val) {
-        if(val === current.val){
-          return true;
-        } else {
-          this.search(val, current.left)
-      }
-    } else {
-      if(current === null){
-        if(val === current.val){
-          return true;
-        } else {
-          this.search(val, current.right)
-        }
-      }
-    }
-    return false;
+  search(val) {
+   	let currentNode = this.root;
+
+		while (currentNode) {
+			if (val > currentNode.val) {
+				currentNode = currentNode.right;
+			} else if (val < currentNode.val) {
+				currentNode = currentNode.left;
+			} else {
+				return true;
+			}
+		}
+		return false;
   }
 
 
